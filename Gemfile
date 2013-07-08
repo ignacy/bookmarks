@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
+gem 'acts-as-taggable-on'
+gem 'decent_exposure'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

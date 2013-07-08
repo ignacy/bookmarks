@@ -1,0 +1,7 @@
+<%= form_for bookmark do |f| %>
+  <%= f.label :url, 'URL' %>:
+  <%= f.text_field :url %><br />
+  <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+  <%= f.text_field :tag_list %>
+  <%= f.submit %>
+<% end %>
