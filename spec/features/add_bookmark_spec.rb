@@ -1,6 +1,8 @@
 require 'spec_helper'
 
-describe "Adding new bookmark", type: :feature do
+describe "Adding new bookmark and removing it", type: :feature do
+  let(:site) { SimulatedBookmarksSite.new }
+
   it "works when we enter a URL and tags" do
     expect do
       visit '/bookmarks/new'
@@ -22,5 +24,15 @@ describe "Adding new bookmark", type: :feature do
     visit '/bookmarks/new'
     click_button 'Create Bookmark'
     expect(page).to have_content "Url can't be blank"
+  end
+
+  it "allows users to remove bookmarks", js: true do
+    bookmark = Bookmark.create! url: "http://google.com/djhdjd"
+    expect do
+      visit "/bookmarks/#{bookmark.id}"
+      site.accept_next_confirmation
+      click_button "Remove bookmark"
+      visit "/bookmarks"
+    end.to change { Bookmark.count }.by(-1)
   end
 end

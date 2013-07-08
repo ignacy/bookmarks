@@ -15,6 +15,11 @@ class BookmarksController < ApplicationController
     respond_with(bookmark)
   end
 
+  def destroy
+    bookmark.destroy
+    redirect_to "/bookmarks", notice: "Bookmark removed"
+  end
+
   def show
 
   end

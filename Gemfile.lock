@@ -39,6 +39,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.0.0)
+      capybara (~> 2.0, >= 2.0.2)
+      json
+    database_cleaner (1.0.1)
     decent_exposure (2.2.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
@@ -133,6 +137,8 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   capybara
+  capybara-webkit
+  database_cleaner
   decent_exposure
   jquery-rails
   launchy

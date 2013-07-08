@@ -17,8 +17,10 @@ gem 'jquery-rails'
 group :test do
   gem "capybara"
   gem "launchy"
+  gem 'capybara-webkit'
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'database_cleaner'
 end
