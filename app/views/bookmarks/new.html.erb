@@ -1,4 +1,12 @@
 <%= form_for bookmark do |f| %>
+  <% if bookmark.errors.any? %>
+    <ul>
+      <% bookmark.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <%= f.label :url, 'URL' %>:
   <%= f.text_field :url %><br />
   <%= f.label :tag_list, "Tags (separated by commas)" %><br />
