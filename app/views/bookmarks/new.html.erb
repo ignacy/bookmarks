@@ -1,15 +1,27 @@
 <%= form_for bookmark do |f| %>
-  <% if bookmark.errors.any? %>
-    <ul>
-      <% bookmark.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
 
-  <%= f.label :url, 'URL' %>:
-  <%= f.text_field :url %><br />
-  <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-  <%= f.text_field :tag_list %>
-  <%= f.submit %>
+  <fieldset>
+
+    <% if bookmark.errors.any? %>
+      <ul>
+        <% bookmark.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class="span10">
+      <%= f.label :url, 'URL' %>
+      <%= f.text_field :url, placeholder: "Bookmark address", class: "input-xlarge" %>
+    </div>
+
+    <div class="span10">
+      <%= f.label :tag_list, "Tags" %>
+      <%= f.text_field :tag_list, placeholder: "Separated by commas" %>
+    </div>
+
+    <div class="span10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </fieldset>
 <% end %>

@@ -5,6 +5,7 @@ gem 'rails', '3.2.11'
 gem 'pg'
 gem 'acts-as-taggable-on'
 gem 'decent_exposure'
+gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

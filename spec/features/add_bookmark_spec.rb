@@ -5,7 +5,7 @@ describe "Adding new bookmark", type: :feature do
     expect do
       visit '/bookmarks/new'
       fill_in 'URL', with: 'http://example.com'
-      fill_in 'Tags (separated by commas)', with: 'important'
+      fill_in 'Tags', with: 'important'
       click_button 'Create Bookmark'
     end.to change { Bookmark.count }.by(1)
   end
