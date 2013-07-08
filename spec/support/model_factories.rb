@@ -1,0 +1,3 @@
+module ModelFactories
+
+end
