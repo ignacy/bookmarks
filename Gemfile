@@ -7,6 +7,7 @@ gem 'acts-as-taggable-on'
 gem 'decent_exposure'
 gem "twitter-bootstrap-rails"
 gem 'shorturl'
+gem 'mechanize'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

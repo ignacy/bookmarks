@@ -1,15 +1,22 @@
 module BookmarkFactory
   def self.create(opts)
-    opts.reverse_merge! url_shortener: ShortURL
-    new_bookmark = Bookmark.new(opts.slice(:url, :tag_list))
+    shortener = opts.fetch(:url_shortener) { ShortURL }
+    bookmark = Bookmark.new(opts.slice(:url, :tag_list))
 
-    domain = URI.parse(new_bookmark.url).host
-    site = Site.where(domain: domain).first ||
-      Site.create(domain: domain)
+    if bookmark.url.present?
+      unless bookmark.url[/^https?:\/\//]
+        bookmark.url = "http://#{bookmark.url}"
+      end
 
-    new_bookmark.shortening = opts[:url_shortener].shorten(new_bookmark.url)
-    new_bookmark.site_id  = site.id
-    new_bookmark.save!
-    new_bookmark
+      domain = URI.parse(bookmark.url).host
+      site = Site.find_or_create_by_domain(domain)
+      bookmark.site_id = site.id
+
+      bookmark.title = GetPageTitle.from(bookmark.url)
+      bookmark.shortening = shortener.shorten(bookmark.url)
+    end
+
+    bookmark.save
+    bookmark
   end
 end

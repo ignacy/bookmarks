@@ -10,7 +10,7 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    bookmark = Bookmark.create_with(params[:bookmark])
+    self.bookmark = Bookmark.create_with(params[:bookmark])
     respond_with(bookmark)
   end
 

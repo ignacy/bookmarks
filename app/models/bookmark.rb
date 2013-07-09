@@ -1,5 +1,5 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :shortening, :site_id, :url, :tag_list
+  attr_accessible :shortening, :site_id, :url, :tag_list, :title
   acts_as_taggable
   validates :url, presence: true
   belongs_to :site
