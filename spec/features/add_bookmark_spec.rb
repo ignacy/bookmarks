@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Adding new bookmark and removing it", type: :feature do
-  let(:site) { SimulatedBookmarksSite.new }
+  let(:simulated_website) { SimulatedBookmarksSite.new }
 
   it "works when we enter a URL and tags" do
     expect do
@@ -30,7 +30,7 @@ describe "Adding new bookmark and removing it", type: :feature do
     bookmark = Bookmark.create! url: "http://google.com/djhdjd"
     expect do
       visit "/bookmarks/#{bookmark.id}"
-      site.accept_next_confirmation
+      simulated_website.accept_next_confirmation
       click_button "Remove bookmark"
       visit "/bookmarks"
     end.to change { Bookmark.count }.by(-1)
