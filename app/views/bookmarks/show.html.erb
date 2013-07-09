@@ -1,6 +1,7 @@
 <div id="bookmark">
   <h2><%= link_to bookmark.url, bookmark.shortening %></h2>
   <p>Tags: <%= bookmark.tag_list %></p>
+  <p>Shortening <%= link_to bookmark.shortening, bookmark.shortening %></p>
   <p><%= link_to "Edit Bookmark", edit_bookmark_path(bookmark) %></p>
   <p><%= button_to "Remove bookmark", bookmark, method: :delete, confirm: "Are you sure?", class: "destroy btn btn-danger" %></p>
 </div>
