@@ -2,7 +2,7 @@
   <h2><%= link_to bookmark.title, bookmark.url %></h2>
 
   <p>Tags: <%= bookmark.tag_list %></p>
-
+  <p>Full url: <%= link_to bookmark.url, bookmark.url  %></p>
   <p>Shortening <%= link_to bookmark.shortening, bookmark.shortening %></p>
   <p><%= button_to "Remove bookmark", bookmark, method: :delete, confirm: "Are you sure?", class: "destroy btn btn-danger" %></p>
 </div>
