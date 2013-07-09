@@ -1,12 +1,11 @@
 class BookmarksController < ApplicationController
   respond_to(:html)
   expose(:bookmark)
-
-  def index
-    if params[:tag]
-      @bookmarks = Bookmark.tagged_with(params[:tag])
+  expose(:bookmarks) do
+    if params[:tag].present?
+      Bookmark.tagged_with(params[:tag])
     else
-      @bookmarks = Bookmark.all
+      Bookmark.scoped
     end
   end
 
@@ -19,9 +18,4 @@ class BookmarksController < ApplicationController
     bookmark.destroy
     redirect_to "/bookmarks", notice: "Bookmark removed"
   end
-
-  def show
-
-  end
-
 end
