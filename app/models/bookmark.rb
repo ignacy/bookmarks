@@ -7,4 +7,8 @@ class Bookmark < ActiveRecord::Base
   def self.create_with(opts)
     BookmarkFactory.create(opts)
   end
+
+  def result_title
+    "Bookmark: #{self.title}"
+  end
 end
